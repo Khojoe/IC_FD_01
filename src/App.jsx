@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-purple-50 via-indigo-50 to-pink-50 text-gray-900 overflow-hidden">
-      {/* Navbar - Glassmorphism */}
+      {/* Navbar */}
       <nav className="fixed top-0 w-full bg-white/70 backdrop-blur-xl border-b border-purple-200/50 shadow-lg z-50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
           <motion.h1
@@ -63,7 +63,7 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero - Bigger, illustrated feel */}
+      {/* Hero */}
       <section id="about" className="pt-48 pb-32 px-6 text-center relative">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,#c084fc_0%,transparent_50%)]"></div>
@@ -127,7 +127,7 @@ function App() {
         </motion.div>
       </section>
 
-      {/* Skills - Animated & hover-interactive cards */}
+      {/* Skills */}
       <section id="skills" className="py-24 px-6 bg-white relative">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-5xl font-bold text-center mb-16 bg-linear-to-r from-purple-700 to-indigo-700 bg-clip-text text-transparent">
@@ -319,10 +319,10 @@ function App() {
           >
             <FaEnvelope className="hover:text-purple-300 transition" />
           </motion.a>
-          {/* WhatsApp - replace YOUR_PHONE_NUMBER with your actual number */}
+          {/* WhatsApp */}
           <motion.a
             whileHover={{ scale: 1.3 }}
-            href="https://wa.me/233554539994" // ← CHANGE THIS TO YOUR NUMBER
+            href="https://wa.me/233554539994"
             target="_blank"
             rel="noopener noreferrer"
           >
