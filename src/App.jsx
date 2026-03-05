@@ -4,7 +4,6 @@ import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaPhone,
   FaReact,
   FaNodeJs,
   FaPython,
