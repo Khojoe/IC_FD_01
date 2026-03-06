@@ -4,7 +4,7 @@ This is my personal professional portfolio, built as Task 1 for the Interncred F
 
 ## Live Demo
 
-[View the live portfolio on Vercel](https://ic-fd-01-iota.vercel.app/) // ← Replace with your actual Vercel URL
+[View the live portfolio on Vercel](https://ic-fd-01-iota.vercel.app/)
 
 ## Description
 
