@@ -202,9 +202,9 @@ function App() {
                 link: "#",
               },
               {
-                title: "Responsive Landing Page (Upcoming)",
-                desc: "Visually striking hero, testimonials, contact form : Task 2 for Interncred.",
-                link: "#",
+                title: "Responsive Landing Page",
+                desc: "Visually striking hero, testimonials, contact form : Task 2 for Interncred Internship.",
+                link: "https://ic-fd-02-drab.vercel.app/",
               },
             ].map((proj, i) => (
               <motion.div
