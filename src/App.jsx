@@ -202,7 +202,7 @@ function App() {
                 link: "#",
               },
               {
-                title: "Responsive Landing Page (Upcoming)",
+                title: "Responsive Landing Page",
                 desc: "Visually striking hero, testimonials, contact form : Task 2 for Interncred.",
                 link: "https://ic-fd-02-drab.vercel.app/",
               },
