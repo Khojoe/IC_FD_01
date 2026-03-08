@@ -35,9 +35,10 @@ This project demonstrates my skills in HTML, CSS, JavaScript, React, and respons
 1. Clone the repo:
 
    git clone <https://github.com/Khojoe/IC_FD_01.git>
+   
    cd IC_FD_01
 
-2. Install dependencies:
+3. Install dependencies:
 
 npm install
 
