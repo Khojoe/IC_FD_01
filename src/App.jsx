@@ -15,7 +15,8 @@ import emailjs from "@emailjs/browser";
 
 function App() {
   const form = useRef();
-  const [formStatus, setFormStatus] = useState("");
+  const [formStatus, setFormStatus] = useState(""); // "success" | "error" | ""
+
   const sendEmail = (e) => {
     e.preventDefault();
     emailjs
@@ -26,152 +27,171 @@ function App() {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(() => {
-        setFormStatus("Message sent successfully! 🎉");
+        setFormStatus("success");
         form.current.reset();
       })
-      .catch(() => setFormStatus("Failed to send. Please try again."));
+      .catch(() => setFormStatus("error"));
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-purple-50 via-indigo-50 to-pink-50 text-gray-900 overflow-hidden">
+    <div className="min-h-screen bg-[#09090f] text-white overflow-x-hidden">
+      {/* Ambient glow orbs */}
+      <div className="pointer-events-none fixed top-[-15%] left-[-10%] w-[700px] h-[700px] rounded-full bg-violet-700/20 blur-[140px] z-0" />
+      <div className="pointer-events-none fixed bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-indigo-600/15 blur-[120px] z-0" />
+
       {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-white/70 backdrop-blur-xl border-b border-purple-200/50 shadow-lg z-50">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <motion.h1
-            initial={{ opacity: 0, x: -50 }}
+      <nav className="fixed top-0 w-full bg-[#09090f]/80 backdrop-blur-xl border-b border-white/[0.06] z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <motion.span
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-3xl md:text-4xl font-extrabold bg-linear-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+            className="text-xl font-black tracking-tight text-white"
           >
-            Immanuel O.
-          </motion.h1>
-          <div className="hidden md:flex space-x-12">
+            Immanuel<span className="text-violet-400">.</span>
+          </motion.span>
+          <div className="hidden md:flex items-center gap-8">
             {["About", "Skills", "Projects", "Contact"].map((item, i) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="relative text-lg font-semibold text-gray-800 hover:text-purple-700 transition-colors group"
+                transition={{ delay: i * 0.08 }}
+                className="text-sm text-white/50 hover:text-white transition-colors font-medium"
               >
                 {item}
-                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-purple-600 rounded transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
+            <motion.a
+              href="#contact"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-sm bg-violet-600 hover:bg-violet-500 text-white px-5 py-2 rounded-full font-semibold transition-colors"
+            >
+              Hire Me
+            </motion.a>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section id="about" className="pt-48 pb-32 px-6 text-center relative">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,#c084fc_0%,transparent_50%)]"></div>
-        </div>
+      <section
+        id="about"
+        className="relative z-10 pt-44 pb-32 px-6 text-center"
+      >
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2 }}
-          className="max-w-5xl mx-auto relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="max-w-4xl mx-auto"
         >
           <motion.img
-            initial={{ opacity: 0, y: 60, rotate: -8 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
-            transition={{ delay: 0.3, duration: 1.2 }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
             src="https://avatars.githubusercontent.com/u/172178177?v=4"
             alt="Immanuel Oheneba Debe"
-            className="w-64 h-64 rounded-full mx-auto mb-12 border-8 border-white shadow-2xl ring-4 ring-purple-400/30 object-cover"
+            className="w-28 h-28 rounded-full mx-auto mb-8 border-2 border-violet-500/40 shadow-xl shadow-violet-900/30 object-cover"
           />
-          <h2 className="text-5xl md:text-7xl font-extrabold mb-6 bg-linear-to-r from-purple-700 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            Immanuel Oheneba Debe
-          </h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-indigo-700 mb-10"
-          >
+
+          <div className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs px-4 py-2 rounded-full mb-6 font-medium tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+            Open to opportunities
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight tracking-tight">
+            Immanuel{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400">
+              Oheneba Debe
+            </span>
+          </h1>
+
+          <p className="text-xl md:text-2xl font-semibold text-white/60 mb-6">
             Aspiring Frontend Developer
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed mb-12"
-          >
+          </p>
+
+          <p className="text-base md:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed mb-10">
             Passionate about building beautiful, responsive web experiences.
             Currently studying JavaScript, HTML, CSS, React, Node.js, Python,
-            and Java. Interning in Frontend Development at Interncred (FD track)
-            — turning theory into real-world projects every day.
-          </motion.p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            and Java. Interning at Interncred (FD track) — turning theory into
+            real-world projects every day.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.a
               href="#contact"
-              whileHover={{
-                scale: 1.08,
-                boxShadow: "0 20px 40px -10px rgba(139, 92, 246, 0.4)",
-              }}
-              className="bg-linear-to-r from-purple-600 to-indigo-600 text-white px-12 py-5 rounded-full font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white px-10 py-4 rounded-full font-bold text-base shadow-lg shadow-violet-900/40 transition-all"
             >
               Get in Touch
             </motion.a>
             <motion.a
               href="https://github.com/Khojoe"
               target="_blank"
-              whileHover={{ scale: 1.08 }}
-              className="border-2 border-purple-600 text-purple-700 px-12 py-5 rounded-full font-bold hover:bg-purple-50 transition-all duration-300 shadow-xl"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              className="border border-white/10 hover:border-white/25 text-white/70 hover:text-white px-10 py-4 rounded-full font-semibold transition-all flex items-center justify-center gap-2"
             >
-              View GitHub
+              <FaGithub /> View GitHub
             </motion.a>
           </div>
         </motion.div>
       </section>
 
       {/* Skills */}
-      <section id="skills" className="py-24 px-6 bg-white relative">
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-5xl font-bold text-center mb-16 bg-linear-to-r from-purple-700 to-indigo-700 bg-clip-text text-transparent">
-            My Skills
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10">
+      <section id="skills" className="relative z-10 py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-14"
+          >
+            <p className="text-violet-400 text-xs uppercase tracking-[0.2em] font-semibold mb-3">
+              What I work with
+            </p>
+            <h2 className="text-5xl font-black tracking-tight">My Skills</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {[
-              { icon: SiHtml5, name: "HTML5", color: "text-orange-600" },
-              { icon: SiCss3, name: "CSS3", color: "text-blue-600" },
+              { icon: SiHtml5, name: "HTML5", color: "text-orange-500" },
+              { icon: SiCss3, name: "CSS3", color: "text-blue-500" },
               {
                 icon: SiJavascript,
                 name: "JavaScript",
-                color: "text-yellow-500",
+                color: "text-yellow-400",
               },
-              { icon: FaReact, name: "React.js", color: "text-cyan-600" },
+              { icon: FaReact, name: "React.js", color: "text-cyan-400" },
               {
                 icon: SiTailwindcss,
                 name: "Tailwind CSS",
-                color: "text-teal-500",
+                color: "text-teal-400",
               },
-              { icon: FaNodeJs, name: "Node.js", color: "text-green-600" },
-              { icon: FaPython, name: "Python", color: "text-blue-500" },
-              { icon: FaJava, name: "Java", color: "text-red-600" },
-              { name: "Responsive Design", color: "text-purple-700 font-bold" },
-              { name: "Git & GitHub", color: "text-purple-700 font-bold" },
+              { icon: FaNodeJs, name: "Node.js", color: "text-green-500" },
+              { icon: FaPython, name: "Python", color: "text-blue-400" },
+              { icon: FaJava, name: "Java", color: "text-red-500" },
+              { name: "Responsive Design", color: "text-violet-400" },
+              { name: "Git & GitHub", color: "text-violet-400" },
             ].map((skill, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.7 }}
-                whileHover={{
-                  scale: 1.12,
-                  rotate: 3,
-                  boxShadow: "0 25px 50px -12px rgba(139, 92, 246, 0.3)",
-                }}
-                className="bg-linear-to-br from-white to-purple-50/30 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-400 border border-purple-100 flex flex-col items-center group cursor-pointer"
+                transition={{ delay: i * 0.07, duration: 0.5 }}
+                whileHover={{ scale: 1.06, y: -4 }}
+                className="bg-white/[0.04] border border-white/[0.07] hover:border-violet-500/30 p-6 rounded-2xl flex flex-col items-center gap-3 group cursor-pointer transition-all"
               >
                 {skill.icon && (
                   <skill.icon
-                    className={`text-7xl mb-6 ${skill.color} group-hover:scale-110 transition-transform duration-300`}
+                    className={`text-5xl ${skill.color} group-hover:scale-110 transition-transform duration-300`}
                   />
                 )}
-                <p className="text-xl font-semibold text-center group-hover:text-purple-700 transition-colors">
+                <p className="text-sm font-semibold text-white/70 group-hover:text-white text-center transition-colors">
                   {skill.name}
                 </p>
               </motion.div>
@@ -181,49 +201,71 @@ function App() {
       </section>
 
       {/* Projects */}
-      <section
-        id="projects"
-        className="py-24 px-6 bg-linear-to-b from-indigo-50 to-purple-50"
-      >
-        <div className="max-w-7xl mx-auto">
-          <h3 className="text-5xl font-bold text-center mb-16 bg-linear-to-r from-purple-700 to-indigo-700 bg-clip-text text-transparent">
-            Projects
-          </h3>
-          <div className="grid md:grid-cols-3 gap-12">
+      <section id="projects" className="relative z-10 py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-14"
+          >
+            <p className="text-violet-400 text-xs uppercase tracking-[0.2em] font-semibold mb-3">
+              What I've built
+            </p>
+            <h2 className="text-5xl font-black tracking-tight">Projects</h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 title: "This Portfolio",
                 desc: "Modern React + Tailwind single-page portfolio built for Interncred FD internship.",
                 link: "#",
+                tag: "Live",
               },
               {
-                title: "To-Do List App (Upcoming)",
-                desc: "Task manager with CRUD, filtering, local storage : honing core frontend skills.",
+                title: "To-Do List App",
+                desc: "Task manager with CRUD, filtering, and local storage — honing core frontend skills.",
                 link: "#",
+                tag: "Upcoming",
               },
               {
                 title: "Responsive Landing Page",
-                desc: "Visually striking hero, testimonials, contact form : Task 2 for Interncred Internship.",
+                desc: "Visually striking hero, testimonials, and contact form — Task 2 for Interncred Internship.",
                 link: "https://ic-fd-02-drab.vercel.app/",
+                tag: "Live",
               },
             ].map((proj, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-white/80 backdrop-blur-sm p-10 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-400 border border-purple-200/50 hover:border-purple-400 group"
+                transition={{ delay: i * 0.15, duration: 0.5 }}
+                whileHover={{ y: -6 }}
+                className="bg-white/[0.04] border border-white/[0.07] hover:border-violet-500/30 p-8 rounded-2xl transition-all group"
               >
-                <h4 className="text-2xl font-bold mb-5 text-purple-800 group-hover:text-purple-600 transition-colors">
+                <div className="mb-4">
+                  <span
+                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                      proj.tag === "Live"
+                        ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                        : "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
+                    }`}
+                  >
+                    {proj.tag}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white group-hover:text-violet-300 transition-colors">
                   {proj.title}
-                </h4>
-                <p className="text-gray-700 mb-8 leading-relaxed text-lg">
+                </h3>
+                <p className="text-white/50 leading-relaxed text-sm mb-6">
                   {proj.desc}
                 </p>
                 <a
                   href={proj.link}
-                  className="text-purple-600 font-semibold hover:text-purple-800 transition inline-flex items-center group-hover:translate-x-2"
+                  target={proj.link !== "#" ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="text-violet-400 hover:text-violet-300 font-semibold text-sm transition-colors inline-flex items-center gap-1"
                 >
                   View Project →
                 </a>
@@ -234,55 +276,75 @@ function App() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="py-24 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-5xl font-bold text-center mb-16 bg-linear-to-r from-purple-700 to-indigo-700 bg-clip-text text-transparent">
-            Contact Me
-          </h3>
+      <section id="contact" className="relative z-10 py-28 px-6">
+        <div className="max-w-lg mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <p className="text-violet-400 text-xs uppercase tracking-[0.2em] font-semibold mb-3">
+              Let's connect
+            </p>
+            <h2 className="text-5xl font-black tracking-tight mb-4">
+              Contact Me
+            </h2>
+            <p className="text-white/40 leading-relaxed">
+              Have a project in mind or just want to say hi? My inbox is always
+              open.
+            </p>
+          </motion.div>
+
           <motion.form
             ref={form}
             onSubmit={sendEmail}
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="bg-white/70 backdrop-blur-xl p-12 rounded-3xl shadow-2xl border border-purple-200/50 hover:border-purple-400 transition-all duration-500 space-y-8"
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="space-y-4"
           >
             <input
               type="text"
               name="user_name"
               placeholder="Your Name"
               required
-              className="w-full p-6 border border-purple-300 rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-400 bg-white/80 text-lg shadow-inner"
+              className="w-full bg-white/[0.05] border border-white/10 text-white placeholder:text-white/30 px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
             />
             <input
               type="email"
               name="user_email"
               placeholder="Your Email"
               required
-              className="w-full p-6 border border-purple-300 rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-400 bg-white/80 text-lg shadow-inner"
+              className="w-full bg-white/[0.05] border border-white/10 text-white placeholder:text-white/30 px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
             />
             <textarea
               name="message"
               placeholder="Your Message"
-              rows="6"
+              rows="5"
               required
-              className="w-full p-6 border border-purple-300 rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-400 bg-white/80 text-lg shadow-inner"
+              className="w-full bg-white/[0.05] border border-white/10 text-white placeholder:text-white/30 px-5 py-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all resize-none"
             />
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-linear-to-r from-purple-600 to-indigo-600 text-white py-6 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white py-4 rounded-xl font-bold text-base shadow-lg shadow-violet-900/30 transition-all"
             >
               Send Message
             </motion.button>
+
             {formStatus && (
               <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-center mt-6 text-xl font-semibold text-green-600"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`text-center text-sm font-semibold ${
+                  formStatus === "success" ? "text-emerald-400" : "text-red-400"
+                }`}
               >
-                {formStatus}
+                {formStatus === "success"
+                  ? "Message sent successfully! 🎉"
+                  : "Failed to send. Please try again."}
               </motion.p>
             )}
           </motion.form>
@@ -290,43 +352,46 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-linear-to-r from-purple-900 to-indigo-900 text-white py-16 text-center">
-        <p className="text-xl mb-6">
-          © {new Date().getFullYear()} Immanuel Oheneba Debe. Built during
-          Interncred Frontend Internship (FD track).
+      <footer className="relative z-10 border-t border-white/[0.06] py-12 text-center">
+        <p className="text-white/30 text-sm mb-8">
+          © {new Date().getFullYear()} Immanuel Oheneba Debe · Built during
+          Interncred Frontend Internship (FD track)
         </p>
-        <div className="flex justify-center space-x-12 text-5xl">
-          <motion.a
-            whileHover={{ scale: 1.3 }}
-            href="https://github.com/Khojoe"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub className="hover:text-purple-300 transition" />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.3 }}
-            href="https://www.linkedin.com/in/immanuel-oheneba-debe-352ab0367"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin className="hover:text-purple-300 transition" />
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.3 }}
-            href="mailto:immanueldebe@gmail.com"
-          >
-            <FaEnvelope className="hover:text-purple-300 transition" />
-          </motion.a>
-          {/* WhatsApp */}
-          <motion.a
-            whileHover={{ scale: 1.3 }}
-            href="https://wa.me/233554539994"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <BsWhatsapp className="hover:text-green-400 transition" />
-          </motion.a>
+        <div className="flex justify-center gap-4">
+          {[
+            {
+              icon: FaGithub,
+              href: "https://github.com/Khojoe",
+              label: "GitHub",
+            },
+            {
+              icon: FaLinkedin,
+              href: "https://www.linkedin.com/in/immanuel-oheneba-debe-352ab0367",
+              label: "LinkedIn",
+            },
+            {
+              icon: FaEnvelope,
+              href: "mailto:immanueldebe@gmail.com",
+              label: "Email",
+            },
+            {
+              icon: BsWhatsapp,
+              href: "https://wa.me/233554539994",
+              label: "WhatsApp",
+            },
+          ].map(({ icon: Icon, href, label }) => (
+            <motion.a
+              key={label}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.2, y: -2 }}
+              aria-label={label}
+              className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-violet-400 hover:border-violet-500/40 transition-all"
+            >
+              <Icon className="text-lg" />
+            </motion.a>
+          ))}
         </div>
       </footer>
     </div>
