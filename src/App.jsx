@@ -232,7 +232,7 @@ function App() {
               {
                 title: "Responsive Landing Page",
                 desc: "Visually striking hero, testimonials, and contact form — Task 2 for Interncred Internship.",
-                link: "https://ic-fd-02-drab.vercel.app/",
+                link: "https://landing-page-project1-rho.vercel.app/",
                 tag: "Live",
               },
             ].map((proj, i) => (
