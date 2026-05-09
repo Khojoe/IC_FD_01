@@ -41,7 +41,7 @@ function App() {
 
       {/* Navbar */}
       <nav className="fixed top-0 w-full bg-[#09090f]/80 backdrop-blur-xl border-b border-white/[0.06] z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
           <motion.span
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -49,6 +49,7 @@ function App() {
           >
             Immanuel<span className="text-violet-400">.</span>
           </motion.span>
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {["About", "Skills", "Projects", "Contact"].map((item, i) => (
               <motion.a
@@ -72,13 +73,25 @@ function App() {
               Hire Me
             </motion.a>
           </div>
+          {/* Mobile nav */}
+          <div className="flex md:hidden items-center gap-3">
+            {["About", "Skills", "Projects", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-xs font-semibold text-white/60 hover:text-white transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 
       {/* Hero */}
       <section
         id="about"
-        className="relative z-10 pt-44 pb-32 px-6 text-center"
+        className="relative z-10 pt-24 sm:pt-36 md:pt-44 pb-16 sm:pb-24 md:pb-32 px-4 sm:px-6 text-center"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -92,7 +105,7 @@ function App() {
             transition={{ delay: 0.2, duration: 0.8 }}
             src="https://avatars.githubusercontent.com/u/172178177?v=4"
             alt="Immanuel Oheneba Debe"
-            className="w-28 h-28 rounded-full mx-auto mb-8 border-2 border-violet-500/40 shadow-xl shadow-violet-900/30 object-cover"
+            className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full mx-auto mb-6 sm:mb-8 border-2 border-violet-500/40 shadow-xl shadow-violet-900/30 object-cover"
           />
 
           <div className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs px-4 py-2 rounded-full mb-6 font-medium tracking-widest uppercase">
@@ -100,25 +113,25 @@ function App() {
             Open to opportunities
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight tracking-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black mb-4 leading-tight tracking-tight">
             Immanuel{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400">
               Oheneba Debe
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl font-semibold text-white/60 mb-6">
+          <p className="text-lg sm:text-xl md:text-2xl font-semibold text-white/60 mb-6">
             Aspiring Frontend Developer
           </p>
 
-          <p className="text-base md:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-sm sm:text-base md:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
             Passionate about building beautiful, responsive web experiences.
             Currently studying JavaScript, HTML, CSS, React, Node.js, Python,
             and Java. Interning at Interncred (FD track) — turning theory into
             real-world projects every day.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0">
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
@@ -142,21 +155,26 @@ function App() {
       </section>
 
       {/* Skills */}
-      <section id="skills" className="relative z-10 py-28 px-6">
+      <section
+        id="skills"
+        className="relative z-10 py-16 sm:py-28 px-4 sm:px-6"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-14"
+            className="mb-10 sm:mb-14"
           >
             <p className="text-violet-400 text-xs uppercase tracking-[0.2em] font-semibold mb-3">
               What I work with
             </p>
-            <h2 className="text-5xl font-black tracking-tight">My Skills</h2>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight">
+              My Skills
+            </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
             {[
               { icon: SiHtml5, name: "HTML5", color: "text-orange-500" },
               { icon: SiCss3, name: "CSS3", color: "text-blue-500" },
@@ -184,14 +202,14 @@ function App() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.07, duration: 0.5 }}
                 whileHover={{ scale: 1.06, y: -4 }}
-                className="bg-white/[0.04] border border-white/[0.07] hover:border-violet-500/30 p-6 rounded-2xl flex flex-col items-center gap-3 group cursor-pointer transition-all"
+                className="bg-white/[0.04] border border-white/[0.07] hover:border-violet-500/30 p-4 sm:p-6 rounded-2xl flex flex-col items-center gap-2 sm:gap-3 group cursor-pointer transition-all"
               >
                 {skill.icon && (
                   <skill.icon
-                    className={`text-5xl ${skill.color} group-hover:scale-110 transition-transform duration-300`}
+                    className={`text-4xl sm:text-5xl ${skill.color} group-hover:scale-110 transition-transform duration-300`}
                   />
                 )}
-                <p className="text-sm font-semibold text-white/70 group-hover:text-white text-center transition-colors">
+                <p className="text-xs sm:text-sm font-semibold text-white/70 group-hover:text-white text-center transition-colors">
                   {skill.name}
                 </p>
               </motion.div>
@@ -201,21 +219,26 @@ function App() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="relative z-10 py-28 px-6">
+      <section
+        id="projects"
+        className="relative z-10 py-16 sm:py-28 px-4 sm:px-6"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="mb-14"
+            className="mb-10 sm:mb-14"
           >
             <p className="text-violet-400 text-xs uppercase tracking-[0.2em] font-semibold mb-3">
               What I've built
             </p>
-            <h2 className="text-5xl font-black tracking-tight">Projects</h2>
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight">
+              Projects
+            </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {[
               {
                 title: "This Portfolio",
@@ -242,7 +265,7 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.15, duration: 0.5 }}
                 whileHover={{ y: -6 }}
-                className="bg-white/[0.04] border border-white/[0.07] hover:border-violet-500/30 p-8 rounded-2xl transition-all group"
+                className="bg-white/[0.04] border border-white/[0.07] hover:border-violet-500/30 p-6 sm:p-8 rounded-2xl transition-all group"
               >
                 <div className="mb-4">
                   <span
@@ -255,10 +278,10 @@ function App() {
                     {proj.tag}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold mb-3 text-white group-hover:text-violet-300 transition-colors">
+                <h3 className="text-base sm:text-lg font-bold mb-3 text-white group-hover:text-violet-300 transition-colors">
                   {proj.title}
                 </h3>
-                <p className="text-white/50 leading-relaxed text-sm mb-6">
+                <p className="text-white/50 leading-relaxed text-xs sm:text-sm mb-6">
                   {proj.desc}
                 </p>
                 <a
@@ -276,21 +299,24 @@ function App() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative z-10 py-28 px-6">
+      <section
+        id="contact"
+        className="relative z-10 py-16 sm:py-28 px-4 sm:px-6"
+      >
         <div className="max-w-lg mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-10 sm:mb-12"
           >
             <p className="text-violet-400 text-xs uppercase tracking-[0.2em] font-semibold mb-3">
               Let's connect
             </p>
-            <h2 className="text-5xl font-black tracking-tight mb-4">
+            <h2 className="text-3xl sm:text-5xl font-black tracking-tight mb-4">
               Contact Me
             </h2>
-            <p className="text-white/40 leading-relaxed">
+            <p className="text-white/40 leading-relaxed text-sm sm:text-base">
               Have a project in mind or just want to say hi? My inbox is always
               open.
             </p>
@@ -352,12 +378,12 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/[0.06] py-12 text-center">
-        <p className="text-white/30 text-sm mb-8">
+      <footer className="relative z-10 border-t border-white/[0.06] py-10 sm:py-12 text-center px-4">
+        <p className="text-white/30 text-xs sm:text-sm mb-6 sm:mb-8">
           © {new Date().getFullYear()} Immanuel Oheneba Debe · Built during
           Interncred Frontend Internship (FD track)
         </p>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-3 sm:gap-4">
           {[
             {
               icon: FaGithub,
