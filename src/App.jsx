@@ -249,8 +249,8 @@ function App() {
               {
                 title: "To-Do List App",
                 desc: "Task manager with CRUD, filtering, and local storage — honing core frontend skills.",
-                link: "#",
-                tag: "Upcoming",
+                link: "https://to-do-list-kryi.onrender.com/",
+                tag: "Live",
               },
               {
                 title: "Responsive Landing Page",
