@@ -125,10 +125,10 @@ function App() {
           </p>
 
           <p className="text-sm sm:text-base md:text-lg text-white/40 max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 px-2 sm:px-0">
-            Passionate about building beautiful, responsive web experiences.
-            Currently studying JavaScript, HTML, CSS, React, Node.js, Python,
-            and Java. Interning at Interncred (FD track) — turning theory into
-            real-world projects every day.
+            I design and build responsive web experiences that are fast, clean,
+            and purposeful. Proficient in JavaScript, React, Node.js, HTML, CSS,
+            Python, and Java. I love turning ideas into real products people can
+            actually use.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0">
