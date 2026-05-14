@@ -270,6 +270,12 @@ function App() {
                 link: "https://syntecxhub-image-gallery-app-one.vercel.app",
                 tag: "Live",
               },
+              {
+                title: "Syntecxhub Landing Page",
+                desc: "A modern, responsive landing page featuring clean code structure, beautiful design, and smooth functionality.",
+                link: "https://syntecxhub-landing-page-f9hf.vercel.app",
+                tag: "Live",
+              },
             ].map((proj, i) => (
               <motion.div
                 key={i}
