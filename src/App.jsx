@@ -264,6 +264,12 @@ function App() {
                 link: "https://age-calculator-r40c.onrender.com/",
                 tag: "Live",
               },
+              {
+                title: "Image Gallery App",
+                desc: "A responsive, dynamically-filtered image gallery with category sorting and lightbox viewing.",
+                link: "https://syntecxhub-image-gallery-app-one.vercel.app",
+                tag: "Live",
+              },
             ].map((proj, i) => (
               <motion.div
                 key={i}
