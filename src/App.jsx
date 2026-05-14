@@ -258,6 +258,12 @@ function App() {
                 link: "https://landing-page-project1-rho.vercel.app/",
                 tag: "Live",
               },
+              {
+                title: "Age Calculator",
+                desc: "A precise age calculator utility built to determine exact age in years, months, and days.",
+                link: "https://age-calculator-r40c.onrender.com/",
+                tag: "Live",
+              },
             ].map((proj, i) => (
               <motion.div
                 key={i}
